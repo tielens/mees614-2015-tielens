@@ -1,0 +1,182 @@
+---
+Title: R Skills Assessment
+author: "MEES 614"
+date: "Monday, February 2, 2015"
+output: html_document
+---
+
+## Student UID: 113145995
+
+# 1. Making objects, assigning values, and simple arithmetic
+
+Make three objects named *x, y, and x*.  Assign any numerical value to each & then multiply them together.
+```{r}
+x<-c(8)
+y<-c(10)
+z<-c(3)
+
+v<-x*z*y
+v
+```
+
+# 2. Creating vectors
+
+Create three vectors. Name the first *myVec* and have it contain any 5 numbers. Name the second *myRep* and have it contain the number 10 repeated 217 times. The third should be named *mySeq* and contain a sequence of numbers from 1-100, counting by 0.25. Have R return the length of *mySeq*.
+```{r}
+myVec<-c(1,2,3,4,5)
+myRep<-rep(10, 217)
+mySeq<-seq( from=1, to=100, by=0.25 )
+length(unique(mySeq))
+```
+
+# 3. Working with objects, files, directories 
+ 
+Execute functions to:
+
+* list the objects in your workspace
+* print your current working directory
+* list the files and folders in your current working directory
+* save your workspace
+
+```{r}
+ls()
+getwd()
+#save.workspace()
+```
+
+# 4. Loading, saving, plotting, and indexing data 
+
+Load the iris dataset & do the following:
+
+  * Make a new object that has the value in row 10, column 1.
+  * Assign new values to the 5th row of the iris dataset by multiplying the current values by 2.
+  * Make a new object containing rows 1-10, 15, 35-40 and columns 1-2, 5 from the iris dataset.
+  * Make a new object that contains everything except the 10th row of the iris dataset.
+  * Make a new object that contains only those records with a sepal length greater than 5.
+  * Make a new object by subsetting the iris dataset so that it contains only the records for **setosa** and save this object to your hard drive as a csv. 
+  * Plot *Sepal Length* vs. *Sepal Width* from the full iris dataset.
+
+```{r}
+##1
+data(iris)
+t<-iris[10,1]
+str(iris)
+#2?
+s<-iris[5, ]
+s2<-s*2
+#cannot do this with species (=factor)
+#3?
+i1<-subset(iris[1:10,1:2])
+i2<-subset(iris[15,1:2])
+i3<-subset(iris[35:40:10,1:2])
+#i4<-cbind(i1,i2,i3)
+
+#4
+iris2<-iris
+iris2<-iris[-10, ]
+#5
+newobject2<-iris$Sepal.Length>5
+b<-iris$Sepal.Length[ iris$Sepal.Length > 55 ]
+#data<-cbind(iris$Sepal.Length, iris$Sepal.Width)
+
+#6 
+iris3 <- subset(iris, iris$Species=="setosa")
+#7
+plot(iris$Sepal.Length~iris$Sepal.Width )
+
+
+
+
+```
+
+# 5. Lists and Dataframes 
+
+Create a list that contains *myVec*, *myRep*, and *mySeq*. Create a dataframe from the first five values of *myVec*, *myRep*, and *mySeq*. Have R return the dimensions and structure of the dataframe and, separately, the number of rows, columns, and column names. Save the dataframe as a csv table.  
+```{r}
+#data.frame(cbind(myVec, myRep, mySeq)
+           
+```
+
+# 6. Installing and Loading packages
+
+Install and then load the *dismo* package.
+```{r}
+#library(dismo)
+
+```
+
+# 7. Plotting 
+
+A. Create a histogram of the sepal length data from the iris dataset and add to it:
+
+* A density curve
+* A normal curve
+* A legend
+
+B. Load and plot the lynx dataset, then create a new plot as follows:
+
+*Make a combined point-line plot, using character code 21 for the points and a line width of 3 for the segments.
+*Make the line segments and outline of the points blue.  Make the fill of the points grey.
+*Label the y-axis *Count* and the x-axis *Year*
+*Lastly, plot the new plot and the original side-by-side in the same window.
+
+```{r}
+hist(iris$Sepal.Length)
+```
+
+# 8. Writing for-loops
+
+A. Write a for-loop the prints "1. Hello world!" five times, replacing the numer with the current interation of the for-loop.
+
+B. Write a nested for-loop that assigns a random number drawn from a uniform distribution (see ?runif) between 0-1 to each position within a 25 x 25 matrix named *myMat*. Use the *image* function to plot a heatmap of your matrix. Create an object that has only the values in your matrix that are greater than 0.5.
+
+```{r}
+#M <- matrix( data=NA, nrow=5, ncol=1 )
+
+#for(i in 5:1){M[ ,i]<- c("Hello world!")} M
+
+
+```
+
+# 9. Using *apply* functions 
+
+Use the apply function to calculate the row means of *myMat* from #8 above.
+```{r}
+#ddply(.data=myMat, .variables="8", .fun="mean"")
+
+```
+
+# 10. Writing custom functions
+
+Write a simple function that will calculate the cube of any number. Plot the results for values 0-10.
+
+```{r}
+# simple function to return square of a number
+
+```
+
+# 11. If-else statements
+
+Write an if-else statement to calculate the price of a speeding ticket, with the following rules:
+
+1. The ticket fee is $25 for every mile per hour above 55.
+2. Plus an additional $50 for every mile per hour above 65. 
+3. There is an additional $100 charge for red cars.
+
+*What is the ticket fee for a red car traveling 75 mph?
+*What is the ticket fee for a black car traveling 58?
+
+```{r}
+
+```
+
+# 12. Finishing up
+
+Save your workspace & then clear it.
+
+```{r}
+
+```
+
+
+
